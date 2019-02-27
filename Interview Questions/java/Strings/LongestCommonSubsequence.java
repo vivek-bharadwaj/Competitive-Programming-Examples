@@ -9,7 +9,7 @@ LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4
 */
 
 class Solution {
-    public static int longestCommonSubsequence(String s1, String s2) {
+    public static int longestCommonSubsequenceTopDown(String s1, String s2) {
         /*
          * lcs("", anything) = 0 lcs(anything, "") = 0 lcs("", "") = 0
          * 
@@ -28,10 +28,29 @@ class Solution {
 
         if (s1.charAt(s1.length() - 1) == s2.charAt(s2.length() - 1)) {
             // Case 1: Match
-            return 1 + longestCommonSubsequence(s1WithoutLastChar, s2WithoutLastChar);
+            return 1 + longestCommonSubsequenceTopDown(s1WithoutLastChar, s2WithoutLastChar);
         } else {
-            return Math.max(longestCommonSubsequence(s1WithoutLastChar, s2),
-                    longestCommonSubsequence(s1, s2WithoutLastChar));
+            return Math.max(longestCommonSubsequenceTopDown(s1WithoutLastChar, s2),
+                    longestCommonSubsequenceTopDown(s1, s2WithoutLastChar));
         }
+    }
+
+    // Bottom UP DP Solution using DP Table
+    public static longestCommonSubsequenceBottomUp(String s1, String s2) {
+        int dp[][] = new int[s1.length() + 1][s2.length() + 1];
+        
+        for(int i = 0; i < s2.length() + 1; i++) {
+            for(int j = 0; j < s1.length() + 1; j++) {
+                if(i == 0 || j == 0) {
+                    dp[i][j] = 0;
+                } else if(s2.charAt(i) == s1.charAt(j)) {
+                    // Match
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+        return dp[s2.length()][s1.length()];
     }
 }
