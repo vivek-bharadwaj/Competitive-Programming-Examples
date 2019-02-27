@@ -3,12 +3,8 @@
 Solutions to programming exercises and some interview questions
 
 Topics:
-Arrays
-
-Linked List
-
-Strings
-
-Trees
-
-Hashing
+<ul><li>Arrays</li>
+<li>Linked List</li>
+  <li>Strings</li>
+  <li>Trees</li>
+  <li>Hashing</li></ul>
