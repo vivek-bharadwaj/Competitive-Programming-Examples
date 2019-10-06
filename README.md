@@ -7,4 +7,7 @@ Topics:
 <li>Linked List</li>
   <li>Strings</li>
   <li>Trees</li>
-  <li>Hashing</li></ul>
+  <li>Hashing</li>
+  <li>Dynamic Programming</li>
+  <li>Graphs</li>
+</ul>
